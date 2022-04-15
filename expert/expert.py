@@ -38,5 +38,10 @@ registerForeign(write_py)
 prolog.consult('kb.pl')  
 
 call(retractall(known))
-problem = [s for s in prolog.query("problem(X).", maxresult=1)]
-print("Your problem is " + (problem[0]['X'] + "." if problem else "unknown."))
+disease = [s for s in prolog.query("disease(X).", maxresult=1)]
+contact = [s for s in prolog.query("contact(X).")]
+#test = [s for s in prolog.query("test(X).")]
+print("Your disease is " + (disease[0]['X'] + "." if disease else "unknown."))
+#print("You need to urgently contact" + (set(c['X'] for c in contact) if contact else "no one"))
+print(test)
+#print("You also need to test" if test else "no testing is needed")

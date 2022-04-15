@@ -1,9 +1,9 @@
 # The code here will ask the user for input based on the askables. 
 # It will only ask the user where necessary.
 # Import necessary packages
-#from dotenv import load_dotenv
+from dotenv import load_dotenv
 
-#load_dotenv()
+load_dotenv()
 
 import tempfile
 from pyswip import Prolog
@@ -42,5 +42,5 @@ disease = [s for s in prolog.query("disease(X).", maxresult=1)]
 contact = [s for s in prolog.query("contact(X).")]
 test = [s for s in prolog.query("test(X).")]
 print("Your disease is " + (disease[0]['X'] + "." if disease else "unknown."))
-print("You need to urgently contact " + (str(set(c['X'] for c in contact)) if contact else "no one"))
-print("You also need to do an " + (test[0]['X'] + " test" if test else "no testing is needed"))
+print("You need to urgently contact " + str(set(c['X'] for c in contact)) if contact else "You don't need to contact anyone")
+print(("You also need to do an " + test[0]['X'] + " test" if test else "No testing is needed"))

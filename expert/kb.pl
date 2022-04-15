@@ -13,7 +13,7 @@ contact(minerva) :- disease(covid).
 contact(hospital) :- disease(covid).
 
 % testing
-test(antigent) :- disease(covid).
+test(antigen) :- disease(covid).
 
 % ask about symptoms
 chest(X) :- ask(chest, X).

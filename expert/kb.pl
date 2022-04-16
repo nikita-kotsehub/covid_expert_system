@@ -3,10 +3,11 @@
 % define disease
 disease(covid) :- chest(pain).
 disease(covid) :- breathing(difficult).
-disease(covid) :- body_temperature(high), cough(strong).
+disease(covid) :- cough(strong).
+disease(covid) :- body_temperature(high), speech(lost).
 disease(covid) :- body_temperature(high), taste(abscent). 
 disease(covid) :- body_temperature(high), smell(abscent).
-disease(flu) :- \+body_temperature(high), \+cough(strong), throat(sore).
+disease(cold) :- \+body_temperature(high), \+cough(strong), throat(sore).
 
 % contact details
 contact(minerva) :- disease(covid).

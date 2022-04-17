@@ -26,15 +26,16 @@ taste(X) :- ask(taste, X).
 smell(X) :- ask(smell, X).
 throat(X) :- ask(throat, X).
 
-
+% Asking clauses
 ask(A, V):-
-    known(yes, A, V), 
+    known(yes, A, V), % succeed if true
     !.	
 
 ask(A, V):-
-    known(_, A, V), 
+    known(_, A, V), % fail if false 
     !, fail.
 
+% If not multivalued, and already known to be something else, dont ask again for a different value.
 ask(A, V):-
     \+multivalued(A),
     known(yes, A, V2),
@@ -42,6 +43,6 @@ ask(A, V):-
     !, fail.
 
 ask(A, V):-
-    read_py(A,V,Y), 
-    assertz(known(Y, A, V)), 
+    read_py(A,V,Y), % get the answer
+    assertz(known(Y, A, V)),  % remember it
     Y == yes.	

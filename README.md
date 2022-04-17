@@ -11,5 +11,4 @@ If the above fails, use these instructions to install:
 5. Run `pip install git+https://github.com/yuce/pyswip@master#egg=pyswip` to install the latest version of PySWIP
 6. If you experience issues running the programs, create a .env file in the main directory and add `SWI_HOME_DIR=C:\\Program Files\\swipl`, or another path to where your swipl is stored.
 7. If you have windows and face issues, this video might help: https://www.youtube.com/watch?v=oJVXMv2TIoU 
-8. After you install it, navigate to basic_test `cd basic_test` and run `python prolog_test.py`. After you run it, you should see: "michael is the father of john; michael is the father of gina"
-9. Finally, run `cd expert` and then `  python expert.py` to run the main expert system.
+8. Finally, run `cd expert` and then `python expert.py` to run the main expert system.

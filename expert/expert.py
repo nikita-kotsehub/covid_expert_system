@@ -1,16 +1,15 @@
 # The code here will ask the user for input based on the askables. 
 # It will only ask the user where necessary.
-# Import necessary packages
+# Import necessary packages and load environmental variables
 from dotenv import load_dotenv
-
 load_dotenv()
 
 import tempfile
 from pyswip import Prolog
 from pyswip.easy import *
-#from prolog_logic.pl import KB
 
-prolog = Prolog() # Global handle to interpreter
+# Global handle to interpreter
+prolog = Prolog() 
 
 retractall = Functor("retractall")
 known = Functor("known",3)
@@ -115,6 +114,13 @@ call(retractall(known))
 disease = [s for s in prolog.query("disease(X).", maxresult=1)]
 contact = [s for s in prolog.query("contact(X).")]
 test = [s for s in prolog.query("test(X).")]
+
 print("Your disease is " + (disease[0]['X'] + "." if disease else "unknown."))
-print("You need to urgently contact " + str(' and '.join(set(c['X'] for c in contact))) if contact else "You don't need to contact anyone")
+if contact:
+    contacts = set(c['X'] for c in contact)
+    print("You need to urgently contact " + str(' and '.join(contacts)))
+    if 'minerva' in contacts:
+        print('\t You can reach Minerva at +49 151 24039851 or at bwalder@minerva.edu')
+    if 'hospital' in contacts:
+        print('\t The nearest hospital to Berlin res can be contacted at 030 23110')
 print(("You also need to do an " + test[0]['X'] + " test" if test else "No testing is needed"))
